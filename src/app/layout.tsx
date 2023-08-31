@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
 
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { AuthContextProvider } from "../context/AuthContext";
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -23,12 +24,15 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col h-screen">
-          <Navbar />
+        <AuthContextProvider>
+          <div className="flex flex-col h-screen">
+            <Navbar />
 
-          {children}
-          <Footer />
-        </div>
+            {children}
+
+            <Footer />
+          </div>
+        </AuthContextProvider>
       </body>
     </html>
   );

@@ -1,30 +1,48 @@
 import { getRedirectResult, GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import { auth } from "../config";
 
+import type { User } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
+
 const provider = new GoogleAuthProvider();
 
-signInWithRedirect(auth, provider);
+const signIn = async () => {
+  let error: FirebaseError | null = null;
+  let result: User | null = null;
 
-getRedirectResult(auth)
-  .then((result) => {
-    if (result) {
-      // This gives you a Google Access Token. You can use it to access Google APIs.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
+  try {
+    await signInWithRedirect(auth, provider);
+    const res = await getRedirectResult(auth);
+
+    if (res) {
+      const credential = GoogleAuthProvider.credentialFromResult(res);
       const token = credential?.accessToken;
 
-      // The signed-in user info.
-      const user = result.user;
+      const { user } = res;
       // IdP data available using getAdditionalUserInfo(result)
       // ...
+
+      result = user;
     }
-  })
-  .catch((error) => {
+  } catch (err) {
     // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    const fbError = err as FirebaseError;
+
+    const errorCode = fbError.code;
+    const errorMessage = fbError.message;
     // The email of the user's account used.
-    const email = error.customData.email;
+    const email = fbError.customData?.email;
     // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
+    const credential = GoogleAuthProvider.credentialFromError(fbError);
     // ...
-  });
+
+    error = fbError;
+  }
+
+  return {
+    error,
+    result
+  };
+};
+
+export default signIn;
