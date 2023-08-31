@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
+
+import Loading from "@/components/Loading";
 import { auth } from "@/firebase/config";
 
 import type { User } from "firebase/auth";
@@ -62,7 +64,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   return (
     <AuthContext.Provider value={{ handleLogout, user }}>
-      {loading ? <div>Loading...</div> : children}
+      {loading ? <Loading /> : children}
     </AuthContext.Provider>
   );
 };
