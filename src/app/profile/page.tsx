@@ -1,12 +1,11 @@
 import CreateExercise from "@/components/CreateExercise";
 import PageHeader from "@/components/PageHeader";
 import ProfileData from "@/components/ProfileData";
-import getExercise from "@/firebase/firestore/getExercise";
+
+import getExercises from "@/firebase/firestore/getExercises";
 
 const ProfilePage = async () => {
-  const { error, result } = await getExercise("exercises", "bPxkFkNjQb9VhG2la4QX");
-
-  const docData = result?.data();
+  const { error, result } = await getExercises();
 
   return (
     <div>
@@ -18,11 +17,11 @@ const ProfilePage = async () => {
 
       <p>doc data does here</p>
 
-      <div>
-        <p>route name: {docData?.routeName}</p>
-        <p>average speed: {docData?.averageSpeed} km/h</p>
-        <p>calories burned: {docData?.caloriesBurned}</p>
-      </div>
+      {result?.map((res) => {
+        const data = res.data();
+
+        return <p key={res.id}>route taken: {data.routeName}</p>;
+      })}
     </div>
   );
 };
