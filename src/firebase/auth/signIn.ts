@@ -39,10 +39,7 @@ const signIn = async () => {
     error = fbError;
   }
 
-  return {
-    error,
-    result
-  };
+  return { error, result };
 };
 
 export default signIn;

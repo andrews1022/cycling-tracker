@@ -2,12 +2,11 @@ import CreateExercise from "@/components/CreateExercise";
 import PageHeader from "@/components/PageHeader";
 import ProfileData from "@/components/ProfileData";
 import getExercise from "@/firebase/firestore/getExercise";
-import { Exercise } from "@/types";
 
 const ProfilePage = async () => {
   const { error, result } = await getExercise("exercises", "bPxkFkNjQb9VhG2la4QX");
 
-  const docData = result?.data() as Exercise | undefined;
+  const docData = result?.data();
 
   return (
     <div>
