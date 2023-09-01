@@ -1,29 +1,49 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import type { FormEvent } from "react";
+import addExercise from "@/firebase/firestore/addExercise";
 
-// - route name --> string
-// - distance travelled --> number
-// - duration (minutes) --> number
-// - average speed (kmph) --> number
-// - top speed (kmph) --> number
-// - calories burned --> number
-// - date (today's day, month, year) --> date (string)
+import type { FormEvent } from "react";
+import type { Exercise } from "@/types";
 
 const CreateExercise = () => {
-  const [routeName, setRouteName] = useState("");
-  const [distanceTravelled, setDistanceTravelled] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const router = useRouter();
+
   const [averageSpeed, setAverageSpeed] = useState(0);
-  const [topSpeed, setTopSpeed] = useState(0);
   const [caloriesBurned, setCaloriesBurned] = useState(0);
   const [date, setDate] = useState("");
+  const [distanceTravelled, setDistanceTravelled] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [routeName, setRouteName] = useState("");
+  const [topSpeed, setTopSpeed] = useState(0);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log("form submitted!");
+    // construct object to create doc
+    const exerciseObj: Exercise = {
+      averageSpeed,
+      caloriesBurned,
+      date,
+      distanceTravelled,
+      duration,
+      routeName,
+      topSpeed
+    };
+
+    await addExercise(exerciseObj);
+
+    // reset state
+    setAverageSpeed(0);
+    setCaloriesBurned(0);
+    setDate("");
+    setDistanceTravelled(0);
+    setDuration(0);
+    setRouteName("");
+    setTopSpeed(0);
+
+    router.refresh();
   };
 
   return (
@@ -38,6 +58,7 @@ const CreateExercise = () => {
             className="border-2 border-solid border-cyan-600"
             value={routeName}
             onChange={(event) => setRouteName(event.target.value)}
+            required
           />
         </label>
       </div>
@@ -52,6 +73,7 @@ const CreateExercise = () => {
             className="border-2 border-solid border-cyan-600"
             value={distanceTravelled}
             onChange={(event) => setDistanceTravelled(+event.target.value)}
+            required
             step="any"
           />
         </label>
@@ -67,6 +89,7 @@ const CreateExercise = () => {
             className="border-2 border-solid border-cyan-600"
             value={duration}
             onChange={(event) => setDuration(+event.target.value)}
+            required
           />
         </label>
       </div>
@@ -81,6 +104,7 @@ const CreateExercise = () => {
             className="border-2 border-solid border-cyan-600"
             value={averageSpeed}
             onChange={(event) => setAverageSpeed(+event.target.value)}
+            required
           />
         </label>
       </div>
@@ -95,6 +119,7 @@ const CreateExercise = () => {
             className="border-2 border-solid border-cyan-600"
             value={topSpeed}
             onChange={(event) => setTopSpeed(+event.target.value)}
+            required
           />
         </label>
       </div>
@@ -109,6 +134,7 @@ const CreateExercise = () => {
             className="border-2 border-solid border-cyan-600"
             value={caloriesBurned}
             onChange={(event) => setCaloriesBurned(+event.target.value)}
+            required
           />
         </label>
       </div>
@@ -123,6 +149,7 @@ const CreateExercise = () => {
             className="border-2 border-solid border-cyan-600"
             value={date}
             onChange={(event) => setDate(event.target.value)}
+            required
           />
         </label>
       </div>
