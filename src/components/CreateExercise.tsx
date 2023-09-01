@@ -13,7 +13,7 @@ const CreateExercise = () => {
   return (
     <form className="mt-4" onSubmit={handleSubmit}>
       <div className="mb-4">
-        <label htmlFor="route_name">
+        <label className="block" htmlFor="route_name">
           <p>Route name</p>
           <input
             type="text"
@@ -25,7 +25,7 @@ const CreateExercise = () => {
       </div>
 
       <div className="mb-4">
-        <label htmlFor="distance_travelled">
+        <label className="block" htmlFor="distance_travelled">
           <p>Distance travelled (km)</p>
           <input
             type="number"
@@ -37,7 +37,7 @@ const CreateExercise = () => {
       </div>
 
       <div className="mb-4">
-        <label htmlFor="duration">
+        <label className="block" htmlFor="duration">
           <p>Duration (minutes)</p>
           <input
             type="text"
@@ -49,7 +49,7 @@ const CreateExercise = () => {
       </div>
 
       <div className="mb-4">
-        <label htmlFor="average_speed">
+        <label className="block" htmlFor="average_speed">
           <p>Average speed (kmph)</p>
           <input
             type="number"
@@ -61,7 +61,7 @@ const CreateExercise = () => {
       </div>
 
       <div className="mb-4">
-        <label htmlFor="top_speed">
+        <label className="block" htmlFor="top_speed">
           <p>Top speed (kmph)</p>
           <input
             type="number"
@@ -73,7 +73,7 @@ const CreateExercise = () => {
       </div>
 
       <div className="mb-4">
-        <label htmlFor="calories_burned">
+        <label className="block" htmlFor="calories_burned">
           <p>Calories burned</p>
           <input
             type="number"
@@ -85,7 +85,7 @@ const CreateExercise = () => {
       </div>
 
       <div className="mb-4">
-        <label htmlFor="date">
+        <label className="block" htmlFor="date">
           <p>Date</p>
           <input
             type="date"
