@@ -1,14 +1,11 @@
 import CreateExercise from "@/components/CreateExercise";
 import Exercises from "@/components/Exercises";
 import PageHeader from "@/components/PageHeader";
-import ProfileData from "@/components/ProfileData";
 
-const ProfilePage = async () => {
+const ProfilePage = () => {
   return (
     <div>
       <PageHeader pageName="ProfilePage" />
-
-      <ProfileData />
 
       <div className="flex mt-4">
         <CreateExercise />

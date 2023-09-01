@@ -1,10 +1,10 @@
 "use client";
 
 import PageHeader from "@/components/PageHeader";
-import signIn from "@/firebase/auth/signIn";
+import signInWithGoogle from "@/firebase/auth/signInWithGoogle";
 
 const LoginPage = () => {
-  const handleLogin = async () => await signIn();
+  const handleLogin = async () => await signInWithGoogle();
 
   return (
     <div>

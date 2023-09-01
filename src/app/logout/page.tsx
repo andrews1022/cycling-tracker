@@ -11,7 +11,7 @@ const LogoutPage = () => {
       <PageHeader pageName="LogoutPage" />
 
       <button
-        className="border-cyan-600 border-solid border-2 py-2 px-6 hover:bg-cyan-600 hover:text-white"
+        className="border-cyan-600 border-solid border-2 px-6 py-2 hover:bg-cyan-600 hover:text-white"
         onClick={handleLogout}
         type="button"
       >

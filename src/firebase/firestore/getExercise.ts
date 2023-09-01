@@ -1,21 +1,9 @@
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../config";
+import { converter, db } from "../config";
 
 import type { FirebaseError } from "firebase/app";
-import type {
-  DocumentData,
-  DocumentReference,
-  DocumentSnapshot,
-  FirestoreDataConverter,
-  QueryDocumentSnapshot
-} from "firebase/firestore";
+import type { DocumentData, DocumentReference, DocumentSnapshot } from "firebase/firestore";
 import type { Exercise } from "@/types";
-
-// create a custom converter for the Exercise type
-const converter: FirestoreDataConverter<Exercise> = {
-  toFirestore: (data: Exercise) => data,
-  fromFirestore: (snap: QueryDocumentSnapshot) => snap.data() as Exercise
-};
 
 // get a single exercise doc from firestore
 const getExercise = async (collection: string, id: string) => {
