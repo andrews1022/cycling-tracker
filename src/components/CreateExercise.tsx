@@ -3,7 +3,23 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 
+// - route name --> string
+// - distance travelled --> number
+// - duration (minutes) --> number
+// - average speed (kmph) --> number
+// - top speed (kmph) --> number
+// - calories burned --> number
+// - date (today's day, month, year) --> date (string)
+
 const CreateExercise = () => {
+  const [routeName, setRouteName] = useState("");
+  const [distanceTravelled, setDistanceTravelled] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [averageSpeed, setAverageSpeed] = useState(0);
+  const [topSpeed, setTopSpeed] = useState(0);
+  const [caloriesBurned, setCaloriesBurned] = useState(0);
+  const [date, setDate] = useState("");
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -20,6 +36,8 @@ const CreateExercise = () => {
             name="route_name"
             id="route_name"
             className="border-2 border-solid border-cyan-600"
+            value={routeName}
+            onChange={(event) => setRouteName(event.target.value)}
           />
         </label>
       </div>
@@ -32,6 +50,9 @@ const CreateExercise = () => {
             name="distance_travelled"
             id="distance_travelled"
             className="border-2 border-solid border-cyan-600"
+            value={distanceTravelled}
+            onChange={(event) => setDistanceTravelled(+event.target.value)}
+            step="any"
           />
         </label>
       </div>
@@ -44,6 +65,8 @@ const CreateExercise = () => {
             name="duration"
             id="duration"
             className="border-2 border-solid border-cyan-600"
+            value={duration}
+            onChange={(event) => setDuration(+event.target.value)}
           />
         </label>
       </div>
@@ -56,6 +79,8 @@ const CreateExercise = () => {
             name="average_speed"
             id="average_speed"
             className="border-2 border-solid border-cyan-600"
+            value={averageSpeed}
+            onChange={(event) => setAverageSpeed(+event.target.value)}
           />
         </label>
       </div>
@@ -68,6 +93,8 @@ const CreateExercise = () => {
             name="top_speed"
             id="top_speed"
             className="border-2 border-solid border-cyan-600"
+            value={topSpeed}
+            onChange={(event) => setTopSpeed(+event.target.value)}
           />
         </label>
       </div>
@@ -80,6 +107,8 @@ const CreateExercise = () => {
             name="calories_burned"
             id="calories_burned"
             className="border-2 border-solid border-cyan-600"
+            value={caloriesBurned}
+            onChange={(event) => setCaloriesBurned(+event.target.value)}
           />
         </label>
       </div>
@@ -92,6 +121,8 @@ const CreateExercise = () => {
             name="date"
             id="date"
             className="border-2 border-solid border-cyan-600"
+            value={date}
+            onChange={(event) => setDate(event.target.value)}
           />
         </label>
       </div>
