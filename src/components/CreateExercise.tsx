@@ -1,8 +1,11 @@
 "use client";
 
+import { Timestamp } from "firebase/firestore";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuthContext } from "@/context/AuthContext";
+
 import addExercise from "@/firebase/firestore/addExercise";
 
 import type { FormEvent } from "react";
@@ -19,7 +22,6 @@ const CreateExercise = () => {
   const [distanceTravelled, setDistanceTravelled] = useState(0);
   const [duration, setDuration] = useState(0);
   const [routeName, setRouteName] = useState("");
-  const [topSpeed, setTopSpeed] = useState(0);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,11 +31,10 @@ const CreateExercise = () => {
       averageSpeed,
       caloriesBurned,
       createdBy: user?.uid,
-      date,
+      date: Timestamp.fromDate(new Date(date)),
       distanceTravelled,
       duration,
-      routeName,
-      topSpeed
+      routeName
     };
 
     await addExercise(exerciseObj);
@@ -45,19 +46,19 @@ const CreateExercise = () => {
     setDistanceTravelled(0);
     setDuration(0);
     setRouteName("");
-    setTopSpeed(0);
 
     router.refresh();
   };
 
   return (
     <div className="basis-1/5">
-      <h2 className="font-bold text-1xl">Add Exercise:</h2>
+      <h2 className="font-bold text-1xl">add exercise:</h2>
 
       <form className="mt-4" onSubmit={handleSubmit}>
+        {/* ROUTE NAME */}
         <div className="mb-4">
           <label className="block" htmlFor="route_name">
-            <p>Route name</p>
+            <p>route name</p>
             <input
               type="text"
               name="route_name"
@@ -70,9 +71,10 @@ const CreateExercise = () => {
           </label>
         </div>
 
+        {/* DISTANCE TRAVELLED */}
         <div className="mb-4">
           <label className="block" htmlFor="distance_travelled">
-            <p>Distance travelled (km)</p>
+            <p>distance travelled (km)</p>
             <input
               type="number"
               name="distance_travelled"
@@ -86,11 +88,12 @@ const CreateExercise = () => {
           </label>
         </div>
 
+        {/* DURATION */}
         <div className="mb-4">
           <label className="block" htmlFor="duration">
-            <p>Duration (minutes)</p>
+            <p>duration (minutes)</p>
             <input
-              type="text"
+              type="number"
               name="duration"
               id="duration"
               className="border-2 border-solid border-cyan-600"
@@ -101,9 +104,10 @@ const CreateExercise = () => {
           </label>
         </div>
 
+        {/* AVERAGE SPEED */}
         <div className="mb-4">
           <label className="block" htmlFor="average_speed">
-            <p>Average speed (kmph)</p>
+            <p>average speed (km/h)</p>
             <input
               type="number"
               name="average_speed"
@@ -116,24 +120,10 @@ const CreateExercise = () => {
           </label>
         </div>
 
-        <div className="mb-4">
-          <label className="block" htmlFor="top_speed">
-            <p>Top speed (kmph)</p>
-            <input
-              type="number"
-              name="top_speed"
-              id="top_speed"
-              className="border-2 border-solid border-cyan-600"
-              value={topSpeed}
-              onChange={(event) => setTopSpeed(+event.target.value)}
-              required
-            />
-          </label>
-        </div>
-
+        {/* CALORIES BURNED */}
         <div className="mb-4">
           <label className="block" htmlFor="calories_burned">
-            <p>Calories burned</p>
+            <p>calories burned</p>
             <input
               type="number"
               name="calories_burned"
@@ -146,9 +136,10 @@ const CreateExercise = () => {
           </label>
         </div>
 
+        {/* DATE */}
         <div className="mb-4">
           <label className="block" htmlFor="date">
-            <p>Date</p>
+            <p>date</p>
             <input
               type="date"
               name="date"
@@ -161,12 +152,13 @@ const CreateExercise = () => {
           </label>
         </div>
 
+        {/* SUBMIT */}
         <div>
           <button
             className="border-cyan-600 border-solid border-2 py-2 px-6 hover:bg-cyan-600 hover:text-white"
             type="submit"
           >
-            Submit
+            submit
           </button>
         </div>
       </form>
