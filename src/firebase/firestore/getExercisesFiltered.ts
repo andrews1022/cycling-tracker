@@ -1,4 +1,4 @@
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { converter, db } from "../config";
 
 import type { FirebaseError } from "firebase/app";
@@ -12,7 +12,8 @@ const getExercisesFiltered = async (uid: string | undefined) => {
 
   const firestoreQuery = query(
     collection(db, "exercises").withConverter(converter),
-    where("createdBy", "==", uid)
+    where("createdBy", "==", uid),
+    orderBy("date", "desc")
   );
 
   try {
