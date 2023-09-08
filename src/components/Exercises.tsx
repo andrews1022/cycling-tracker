@@ -4,12 +4,12 @@ import { useAuthContext } from "@/context/AuthContext";
 import getExercisesFiltered from "@/firebase/firestore/getExercisesFiltered";
 
 const tableHeaders = [
-  "route name",
-  "distance travelled (km)",
-  "duration (minutes)",
-  "average speed (kmph)",
-  "calories burned",
-  "date"
+  "Route name",
+  "Distance travelled (km)",
+  "Duration (minutes)",
+  "Average speed (kmph)",
+  "Calories burned",
+  "Date"
 ];
 
 const Exercises = async () => {
@@ -39,21 +39,39 @@ const Exercises = async () => {
             const data = res.data();
 
             const { date } = data;
-            const d = date.toDate();
+            const dateFromTimestamp = date.toDate();
+
+            // format the date to be "MMM dd, yyyy"
+            const formattedDate = dateFromTimestamp.toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "short",
+              year: "numeric"
+            });
 
             return (
-              <tr key={res.id}>
-                <td>{data.routeName}</td>
-                <td>{data.distanceTravelled} km</td>
-                <td>{data.duration} min</td>
-                <td>{data.averageSpeed} km/h</td>
-                <td>{data.caloriesBurned}</td>
-                {/* <td>{d.toString()}</td> */}
-              </tr>
+              <tr key={res.id} className="border-cyan-600 border-solid border-b-2">
+                <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
+                  {data.routeName}
+                </td>
 
-              // <div key={res.id} className="border-solid border-2 border-cyan-600 mb-4 p-2">
-              //   <p>route taken: {data.routeName}</p>
-              // </div>
+                <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
+                  {data.distanceTravelled} km
+                </td>
+
+                <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
+                  {data.duration} min
+                </td>
+
+                <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
+                  {data.averageSpeed} km/h
+                </td>
+
+                <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
+                  {data.caloriesBurned}
+                </td>
+
+                <td className="border-cyan-600 border-solid px-2 py-1">{formattedDate}</td>
+              </tr>
             );
           })}
         </tbody>

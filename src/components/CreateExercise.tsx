@@ -52,13 +52,13 @@ const CreateExercise = () => {
 
   return (
     <div className="basis-1/5">
-      <h2 className="font-bold text-1xl">add exercise:</h2>
+      <h2 className="font-bold text-1xl">Add Exercise:</h2>
 
       <form className="mt-4" onSubmit={handleSubmit}>
         {/* ROUTE NAME */}
         <div className="mb-4">
           <label className="block" htmlFor="route_name">
-            <p>route name</p>
+            <p>Route name</p>
             <input
               type="text"
               name="route_name"
@@ -74,7 +74,7 @@ const CreateExercise = () => {
         {/* DISTANCE TRAVELLED */}
         <div className="mb-4">
           <label className="block" htmlFor="distance_travelled">
-            <p>distance travelled (km)</p>
+            <p>Distance travelled (km)</p>
             <input
               type="number"
               name="distance_travelled"
@@ -91,7 +91,7 @@ const CreateExercise = () => {
         {/* DURATION */}
         <div className="mb-4">
           <label className="block" htmlFor="duration">
-            <p>duration (minutes)</p>
+            <p>Duration (minutes)</p>
             <input
               type="number"
               name="duration"
@@ -107,7 +107,7 @@ const CreateExercise = () => {
         {/* AVERAGE SPEED */}
         <div className="mb-4">
           <label className="block" htmlFor="average_speed">
-            <p>average speed (km/h)</p>
+            <p>Average speed (km/h)</p>
             <input
               type="number"
               name="average_speed"
@@ -123,7 +123,7 @@ const CreateExercise = () => {
         {/* CALORIES BURNED */}
         <div className="mb-4">
           <label className="block" htmlFor="calories_burned">
-            <p>calories burned</p>
+            <p>Calories burned</p>
             <input
               type="number"
               name="calories_burned"
@@ -139,7 +139,7 @@ const CreateExercise = () => {
         {/* DATE */}
         <div className="mb-4">
           <label className="block" htmlFor="date">
-            <p>date</p>
+            <p>Date</p>
             <input
               type="date"
               name="date"
@@ -158,7 +158,7 @@ const CreateExercise = () => {
             className="border-cyan-600 border-solid border-2 py-2 px-6 hover:bg-cyan-600 hover:text-white"
             type="submit"
           >
-            submit
+            Submit
           </button>
         </div>
       </form>
