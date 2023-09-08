@@ -26,9 +26,11 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body className={inter.className}>
         <AuthContextProvider>
           <div className="flex flex-col h-screen">
-            <Navbar />
+            <div className="pt-4 pl-4">
+              <Navbar />
 
-            {children}
+              {children}
+            </div>
 
             <Footer />
           </div>
