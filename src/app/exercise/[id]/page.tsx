@@ -1,14 +1,23 @@
+import EditExercise from "@/components/EditExercise";
 import PageHeader from "@/components/PageHeader";
-import React from "react";
+import getExercise from "@/firebase/firestore/getExercise";
 
-type Props = {};
+type SingleExercisePageProps = {
+  params: {
+    id: string;
+  };
+};
 
-const SingleExercisePage = (props: Props) => {
+const SingleExercisePage = async ({ params }: SingleExercisePageProps) => {
+  const { error, result } = await getExercise("exercises", params.id);
+
+  const docData = result?.data();
+
   return (
     <div>
       <PageHeader pageName="SingleExercisePage" />
 
-      <p>EDIT EXERCISE FORM HERE</p>
+      <EditExercise data={docData} id={params.id} />
     </div>
   );
 };

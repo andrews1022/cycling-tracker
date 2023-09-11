@@ -1,11 +1,11 @@
 import type { Timestamp } from "firebase/firestore";
 
 export type Exercise = {
-  averageSpeed: number;
-  caloriesBurned: number;
+  averageSpeed: number | undefined;
+  caloriesBurned: number | undefined;
   createdBy: string | undefined;
-  date: Timestamp;
-  distanceTravelled: number;
-  duration: number;
-  routeName: string;
+  date: Timestamp | undefined;
+  distanceTravelled: number | undefined;
+  duration: number | undefined;
+  routeName: string | undefined;
 };

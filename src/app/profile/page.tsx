@@ -7,7 +7,7 @@ const ProfilePage = () => {
     <div>
       <PageHeader pageName="ProfilePage" />
 
-      <div className="flex mt-4">
+      <div className="flex">
         <CreateExercise />
 
         {/* @ts-expect-error Async Server Component */}

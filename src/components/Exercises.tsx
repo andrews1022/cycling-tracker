@@ -41,14 +41,15 @@ const Exercises = async () => {
             const data = res.data();
 
             const { date } = data;
-            const dateFromTimestamp = date.toDate();
+            const dateFromTimestamp = date?.toDate();
 
             // format the date to be "MMM dd, yyyy"
-            const formattedDate = dateFromTimestamp.toLocaleDateString("en-US", {
+            const options: Intl.DateTimeFormatOptions = {
               day: "numeric",
               month: "short",
               year: "numeric"
-            });
+            };
+            const formattedDate = dateFromTimestamp?.toLocaleDateString("en-US", options);
 
             return (
               <tr key={res.id} className="border-cyan-600 border-solid border-b-2" data-id={res.id}>
