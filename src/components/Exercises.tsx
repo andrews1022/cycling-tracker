@@ -2,6 +2,7 @@
 
 import { useAuthContext } from "@/context/AuthContext";
 import getExercisesFiltered from "@/firebase/firestore/getExercisesFiltered";
+import Link from "next/link";
 
 const tableHeaders = [
   "Route name",
@@ -9,7 +10,8 @@ const tableHeaders = [
   "Duration (minutes)",
   "Average speed (kmph)",
   "Calories burned",
-  "Date"
+  "Date",
+  "Edit"
 ];
 
 const Exercises = async () => {
@@ -49,7 +51,7 @@ const Exercises = async () => {
             });
 
             return (
-              <tr key={res.id} className="border-cyan-600 border-solid border-b-2">
+              <tr key={res.id} className="border-cyan-600 border-solid border-b-2" data-id={res.id}>
                 <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
                   {data.routeName}
                 </td>
@@ -70,7 +72,15 @@ const Exercises = async () => {
                   {data.caloriesBurned}
                 </td>
 
-                <td className="border-cyan-600 border-solid px-2 py-1">{formattedDate}</td>
+                <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
+                  {formattedDate}
+                </td>
+
+                <td className="border-cyan-600 border-solid border-r-2 px-2 py-1">
+                  <Link href={`/exercise/${res.id}`} className="text-cyan-600 hover:underline">
+                    Edit
+                  </Link>
+                </td>
               </tr>
             );
           })}
