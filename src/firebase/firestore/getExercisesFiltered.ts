@@ -26,4 +26,4 @@ const getExercisesFiltered = async (uid: string | undefined) => {
   return { error, result };
 };
 
-export default getExercisesFiltered;
+export { getExercisesFiltered };

@@ -20,4 +20,4 @@ const getExercises = async () => {
   return { error, result };
 };
 
-export default getExercises;
+export { getExercises };

@@ -1,6 +1,6 @@
-import EditExercise from "@/components/EditExercise";
-import PageHeader from "@/components/PageHeader";
-import getExercise from "@/firebase/firestore/getExercise";
+import { EditExercise } from "@/components/EditExercise";
+import { PageHeader } from "@/components/PageHeader";
+import { getExercise } from "@/firebase/firestore/getExercise";
 
 type SingleExercisePageProps = {
   params: {

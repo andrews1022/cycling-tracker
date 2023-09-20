@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuthContext } from "@/context/AuthContext";
 
-import editExercise from "@/firebase/firestore/editExercise";
+import { editExercise } from "@/firebase/firestore/editExercise";
 
 import type { FormEvent } from "react";
 import type { Exercise } from "@/types";
@@ -166,4 +166,4 @@ const EditExercise = ({ data, id }: EditExerciseProps) => {
   );
 };
 
-export default EditExercise;
+export { EditExercise };

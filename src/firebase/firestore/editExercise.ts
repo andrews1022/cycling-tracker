@@ -7,4 +7,4 @@ const editExercise = async (data: Exercise, exerciseId: string) => {
   await setDoc(doc(db, "exercises", exerciseId), data);
 };
 
-export default editExercise;
+export { editExercise };

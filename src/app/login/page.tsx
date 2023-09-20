@@ -1,7 +1,7 @@
 "use client";
 
-import PageHeader from "@/components/PageHeader";
-import signInWithGoogle from "@/firebase/auth/signInWithGoogle";
+import { PageHeader } from "@/components/PageHeader";
+import { signInWithGoogle } from "@/firebase/auth/signInWithGoogle";
 
 const LoginPage = () => {
   const handleLogin = async () => await signInWithGoogle();

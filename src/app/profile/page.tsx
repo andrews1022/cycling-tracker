@@ -1,6 +1,6 @@
-import CreateExercise from "@/components/CreateExercise";
-import Exercises from "@/components/Exercises";
-import PageHeader from "@/components/PageHeader";
+import { CreateExercise } from "@/components/CreateExercise";
+import { ExercisesTable } from "@/components/ExercisesTable";
+import { PageHeader } from "@/components/PageHeader";
 
 const ProfilePage = () => {
   return (
@@ -11,7 +11,7 @@ const ProfilePage = () => {
         <CreateExercise />
 
         {/* @ts-expect-error Async Server Component */}
-        <Exercises />
+        <ExercisesTable />
       </div>
     </div>
   );

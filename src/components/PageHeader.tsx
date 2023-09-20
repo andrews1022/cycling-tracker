@@ -11,4 +11,4 @@ const PageHeader = ({ pageName }: PageHeaderProps) => {
   );
 };
 
-export default PageHeader;
+export { PageHeader };

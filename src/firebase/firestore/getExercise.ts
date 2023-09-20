@@ -24,4 +24,4 @@ const getExercise = async (collection: string, id: string) => {
   return { error, result };
 };
 
-export default getExercise;
+export { getExercise };

@@ -4,7 +4,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
-import Loading from "@/components/Loading";
+import { Loading } from "@/components/Loading";
 import { auth } from "@/firebase/config";
 
 import type { User } from "firebase/auth";

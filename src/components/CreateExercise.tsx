@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuthContext } from "@/context/AuthContext";
 
-import addExercise from "@/firebase/firestore/addExercise";
+import { addExercise } from "@/firebase/firestore/addExercise";
 
 import type { FormEvent } from "react";
 import type { Exercise } from "@/types";
@@ -166,4 +166,4 @@ const CreateExercise = () => {
   );
 };
 
-export default CreateExercise;
+export { CreateExercise };

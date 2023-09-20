@@ -28,4 +28,4 @@ const signInWithGoogle = async () => {
   return { error, result };
 };
 
-export default signInWithGoogle;
+export { signInWithGoogle };

@@ -1,6 +1,6 @@
 "use client";
 
-import PageHeader from "@/components/PageHeader";
+import { PageHeader } from "@/components/PageHeader";
 import { useAuthContext } from "@/context/AuthContext";
 
 const LogoutPage = () => {

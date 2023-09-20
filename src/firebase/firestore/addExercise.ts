@@ -8,4 +8,4 @@ const addExercise = async (data: Exercise) => {
   await addDoc(collection(db, "exercises"), data);
 };
 
-export default addExercise;
+export { addExercise };

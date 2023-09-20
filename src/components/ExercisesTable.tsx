@@ -1,8 +1,8 @@
 "use client";
 
-import { useAuthContext } from "@/context/AuthContext";
-import getExercisesFiltered from "@/firebase/firestore/getExercisesFiltered";
 import Link from "next/link";
+import { useAuthContext } from "@/context/AuthContext";
+import { getExercisesFiltered } from "@/firebase/firestore/getExercisesFiltered";
 
 const tableHeaders = [
   "Route name",
@@ -14,7 +14,7 @@ const tableHeaders = [
   "Edit"
 ];
 
-const Exercises = async () => {
+const ExercisesTable = async () => {
   const { user } = useAuthContext();
   const { error, result } = await getExercisesFiltered(user?.uid);
 
@@ -91,4 +91,4 @@ const Exercises = async () => {
   );
 };
 
-export default Exercises;
+export { ExercisesTable };
